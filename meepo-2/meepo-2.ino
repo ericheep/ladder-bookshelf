@@ -1,6 +1,7 @@
 // meepo
 // for controlling the meepo board with ChucK
 
+# define arduinoID 2
 # define NUM_SOLENOIDS 6
 
 #include <avr/interrupt.h>
@@ -76,12 +77,12 @@ void loop() {
       // message required for "handshake" to occur
       // happens once per Arduino at the start of the ChucK serial code
       // unnecessary if only using one Meepo at a time
-      /*if (pitch == 63 && velocity == 1023 && handshake == 0) {
+      if (note == 63 && velocity == 1023 && handshake == 0) {
         Serial.write(arduinoID);
         handshake = 1;
-      }*/
+      }
 
-      if (note >= 0 && pitch <= NUM_SOLENOIDS) {
+      if (note >= 0 && note <= NUM_SOLENOIDS) {
         statustimer = 120;
         notes[note] = (velocity * 0.5);
       }
