@@ -5,28 +5,32 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
-matplotlib.rc('font', size=8)
 num_peaks = 1
 fundamentals = []
 
 for i in range(1, 12):
     filename = './../audio/' + str(i) + '-corner.wav'
     fs, x = wavfile.read(filename)
-    harmonics, weights = calculate_harmonics(fs, x, num_peaks)
-    print(harmonics)
+    X, props = calculate_harmonics(fs, x, num_peaks)
+    print(props['harmonics'])
 
+# filename = './../audio/1-corner.wav'
+# fs, x = wavfile.read(filename)
+# X, props = calculate_harmonics(fs, x, num_peaks)
 
 # plotting
-# y = x
-# x = np.arange(0, x.size, 1)
-# plt.plot(x * freq_bin, y)
+freq_bin = props['freq_bin']
+matplotlib.rc('font', size=8)
 
-# x = peaks[peak_indices]
-# y = x[peaks[peak_indices]]
-# labels = peak_freqs[peak_indices]
+y = X
+x = np.arange(0, X.size, 1)
+plt.plot(x * freq_bin, y)
 
-# plt.plot(x * freq_bin, y, 'ro', label=labels, markersize=2)
-# for i, j in zip(x * freq_bin, y):
-#     plt.annotate('%.2f' % i, xy=(i,j), xytext=(i+25,j), horizontalalignment='left', verticalalignment='center')
+x = props['peaks']
+y = X[props['peaks']]
+
+plt.plot(x * freq_bin, y, 'ro', markersize=2)
+for i, j in zip(x * freq_bin, y):
+     plt.annotate('%.2f' % i, xy=(i,j), xytext=(i+25,j), horizontalalignment='left', verticalalignment='center')
 
 # plt.show()

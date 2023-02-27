@@ -17,51 +17,49 @@ def calculate_harmonics(fs, x, num_peaks):
     x = x[onset:]
 
     # shrink file to 4 seconds
-    x = x[:int(fs * 4.75)]
+    x = x[:int(fs * 4.875)]
 
-    # 1024 * 64
-    N = 131072 // 2
-    freq_bin = fs / N
-
-    # X = stft(x, mode='p', N=N, zeropad=False)[0]
+    # real fft, returns up to nyquist
     X = rfft(x)
+
+    # get fft size
     N = X.size * 2
     freq_bin = fs / N
-
-    # discard imaginary numbers
-    X = np.real(X)
-
-    # log scaling
-    X = X - np.min(X)
-    X = np.log(X * 20)
 
     # truncate spectrum
     upper_cutoff = int(4000 / freq_bin)
     X = X[:upper_cutoff]
 
-    # average all the columns
-    # X = np.mean(X, axis=1)
+    # fix em up
+    X = np.real(X)
+    X = X**2
+    X = np.log(X)
 
-    # normalize array
-    # X = X - np.min(X)
+    X = X - np.min(X)
     X = X / np.max(X)
 
-    # silence noise below 300hz
+    # filter low energy
     lower_cutoff = int(300 / freq_bin)
     X[:lower_cutoff] = 0
 
     # get peaks
-    mu = np.mean(X[lower_cutoff:])
-
-    peaks, props = find_peaks(X, height=mu + 0.15)
+    mu = np.mean(X)
+    peaks, peak_props = find_peaks(X, height=0.15, prominence=0.15)
 
     if (peaks.size < num_peaks):
         highest_peaks_num = peaks.size
 
-    peak_heights = props['peak_heights']
+    peak_heights = peak_props['peak_heights']
     peak_indices = np.argpartition(peak_heights, -num_peaks)[-num_peaks:]
 
     # scale back to frequency range
     peak_freqs = peaks * freq_bin
 
-    return peak_freqs[peak_indices], peak_heights[peak_indices]
+    props = dict()
+
+    props['freq_bin'] = freq_bin
+    props['harmonics'] = peak_freqs[peak_indices]
+    props['weights'] = peak_heights[peak_indices]
+    props['peaks'] = peaks[peak_indices]
+
+    return X, props
