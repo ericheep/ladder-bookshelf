@@ -44,7 +44,7 @@ def calculate_harmonics(fs, x, num_peaks):
 
     # get peaks
     mu = np.mean(X)
-    peaks, peak_props = find_peaks(X, height=0.15, prominence=0.15)
+    peaks, peak_props = find_peaks(X, height=mu, prominence=0.125, distance=100)
 
     if (peaks.size < num_peaks):
         highest_peaks_num = peaks.size
