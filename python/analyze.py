@@ -9,7 +9,7 @@ from scipy.fft import rfft, fft
 from scipy.signal import find_peaks
 
 
-def calculate_harmonics(fs, x, num_peaks):
+def calculate_harmonics(fs, x, num_peaks, lo, hi):
     # quarter second onset
     onset = fs // 8
 
@@ -27,7 +27,7 @@ def calculate_harmonics(fs, x, num_peaks):
     freq_bin = fs / N
 
     # truncate spectrum
-    upper_cutoff = int(4000 / freq_bin)
+    upper_cutoff = int(hi / freq_bin)
     X = X[:upper_cutoff]
 
     # fix em up
@@ -39,7 +39,7 @@ def calculate_harmonics(fs, x, num_peaks):
     X = X / np.max(X)
 
     # filter low energy
-    lower_cutoff = int(300 / freq_bin)
+    lower_cutoff = int(lo / freq_bin)
     X[:lower_cutoff] = 0
 
     # get peaks
@@ -47,7 +47,7 @@ def calculate_harmonics(fs, x, num_peaks):
     peaks, peak_props = find_peaks(X, height=mu, prominence=0.125, distance=100)
 
     if (peaks.size < num_peaks):
-        highest_peaks_num = peaks.size
+        num_peaks = peaks.size
 
     peak_heights = peak_props['peak_heights']
     peak_indices = np.argpartition(peak_heights, -num_peaks)[-num_peaks:]
