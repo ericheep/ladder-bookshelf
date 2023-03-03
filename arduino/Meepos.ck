@@ -1,8 +1,13 @@
 // Meepos.ck
-// Eric Heep, May 2016-2023 // communication
+// Eric Heep, May 2023
+
 // this is code that was reconfigured from the robots code I wrote for CalArts back in 2016
-// I still <3 ChucK, but here it's mostly used as a server for Serial communication, because it
-// is so very good at serial communication
+// while  I still <3 ChucK, here it s mostly used as a server for Serial communication
+// it is so very good at serial communication
+
+// in use it is really just an OSC listener from Max/MSP,
+// a softare I have grown more acustom to over the years
+
 
 class Meepos {
 
@@ -76,6 +81,7 @@ class Meepos {
     serial[ID].writeBytes(bytes);
   }
 }
+
 
 Meepos meeps;
 meeps.init();
