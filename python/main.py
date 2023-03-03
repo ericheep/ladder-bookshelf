@@ -73,6 +73,9 @@ all_harmonics = np.concatenate((corner_harmonics[:,0:1],
                                 center_harmonics[:,1:2],
                                 ), axis=1)
 
+def find_commas(harmonics):
+
+
 with open('harmonics.csv', 'w', encoding='UTF8') as f:
     writer = csv.writer(f)
     writer.writerows(all_harmonics)
