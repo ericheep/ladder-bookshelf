@@ -8,11 +8,14 @@ It is worth mentioning that plates were meant to hold books and were not meant t
 
 I suppose this piece isn't too experiemental, but one goal is to allow for an appreciation of the varying spectra due to the precision of the mechatronic strikes and the sparsity of the composition.
 
+![Ladder Spectra Install](pics/ladder-spectra.png)
+
 
 How to Run the Python Analysis
 ----------------------------------
 
 I used Python 3.9.6 with numpy, scipy, and matplotlib
+
 
 How to ChucK on a Raspberry Pi
 ----------------------------------
