@@ -8,7 +8,35 @@ It is worth mentioning that plates were meant to hold books and were not meant t
 
 I suppose this piece isn't too experiemental, but one goal is to allow for an appreciation of the varying spectra due to the precision of the mechatronic strikes and the sparsity of the composition.
 
-![Ladder Spectra Install](pics/ladder-spectra.png)
+![pre-show](pics/pre-show.png)
+
+Spectral Analysis
+----------------------------------
+
+The plates were ordered by the average value of their harmonics and the six out of fourteen plates were chosen in an attempt to create an equal timbral spread.
+
+|ID |Wave File| 1st     | 2nd     | 3rd     | 4th     | 5th      |
+|---|---------|---------|---------|---------|---------|----------|
+| A | 11      | 366.562 | 542.766 | 658.048 | 941.944 | 1714.249 |
+| B | 13      | 367.178 | 540.306 | 658.049 | 945.023 | 1717.329 |
+| C | 2       | 367.588 | 540.920 | 660.509 | 943.585 | 1721.838 |
+| D | 1       | 367.588 | 543.311 | 659.279 | 945.431 | 1721.428 |
+| E | 5       | 366.972 | 542.972 | 660.509 | 945.226 | 1723.890 |
+| F | 4       | 369.229 | 542.766 | 660.715 | 944.406 | 1722.454 |
+| G | 8       | 367.998 | 543.382 | 660.920 | 947.072 | 1726.761 |
+| H | 10      | 369.844 | 544.613 | 662.561 | 946.662 | 1724.505 |
+| I | 3       | 370.665 | 543.997 | 661.740 | 948.919 | 1727.992 |
+| J | 6       | 371.280 | 545.638 | 664.202 | 949.739 | 1732.095 |
+| K | 12      | 371.485 | 547.279 | 665.843 | 950.560 | 1734.146 |
+| L | 7       | 371.485 | 548.305 | 666.868 | 953.021 | 1738.659 |
+| M | 9       | 372.511 | 551.587 | 669.330 | 956.098 | 1744.197 |
+| N | 14      | 371.281 | 550.152 | 667.895 | 957.741 | 1741.534 |
+
+Plates A, C, H, J, L, and N were chosen for the installation. Based on the 3rd harmonic (the most prevelant), the pitch difference between plates A and L is ~29.7 cents
+
+![center strikes](pics/center.png)
+![corner strikes](pics/corner.png)
+![side edge strikes](pics/side-edge.png)
 
 
 How to Run the Python Analysis
