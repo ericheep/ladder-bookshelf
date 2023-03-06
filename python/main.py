@@ -57,7 +57,9 @@ def analyze_plates(strike, lo, hi, num_peaks):
         harmonics.append(sorted_harmonics)
 
     if plotting:
-        plt.savefig(strike + '.png', dpi=1200, bbox_inches='tight')
+        filename = strike + '.png'
+
+        plt.savefig(filename, dpi=1200, bbox_inches='tight')
         plt.close()
 
     return np.array(harmonics)
@@ -72,8 +74,6 @@ all_harmonics = np.concatenate((corner_harmonics[:,0:1],
                                 corner_harmonics[:,2:3],
                                 center_harmonics[:,1:2],
                                 ), axis=1)
-
-def find_commas(harmonics):
 
 
 with open('harmonics.csv', 'w', encoding='UTF8') as f:
