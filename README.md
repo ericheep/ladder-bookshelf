@@ -1,17 +1,32 @@
 # ladder-spectra
 
-This project is pulling me out of statis.
+This piece has a theme of reclamation, it's pulling me out of a statis; it's dusting off my soul.
 
-It uses practically all of the creative coding skills that I've acquired over my artistic life.
+There are six metal plates that I've gathered from an old ladder bookshelf that was to be discared. There were actually fourteen metal plates in total, but I chose six of the fourteen based on their spectral qualities. It is worth mentioning that plates were meant to hold books and were not meant to be used as an instrument, but it's because of that's what makes them interseting to me. The plates are all identical according to steel bookshelf manufacturing standards, but those standards are what makes them interesting. Each plate has it's own harmonic spectrum and they're all slightly different from another. If we're looking at the most prevelant frequency of the metal plates, then the pitch differenc between the lowest plate and the highest plate is almost 35 cents. When looking at the prevelant partials of the plates it's extremely difficult to decipher a harmonic series.
+
+
+
+Install ChucK on a Raspberry Pi
+----------------------------------
+
+Adding ChucK install instructions because this is usually a pain to figure out. First install some dependencies.
+
+    sudo apt-get install bison flex
+    sudo apt-get install alsa-base libasound2-dev libsndfile1-dev
+
+Clone the ChucK repository to a suitable directory.
+
+    git clone https://github.com/ccrma/chuck
+
+Now we can change to the `chuck/src` directory and build the makefile.
+
+    cd chuck/src
+    make linux-alsa
+
+After it is built, install it.
+
+    sudo make install linux-alsa
 
 ChucK is used for serial communication to the Arduinos and recieves OSC communication from Max/MSP.
-Max/MSP is used for composition and generative / algorithmic processes that control the three Arduinos and 18 solenoids.
+Max/MSP is used for composition and generative / algorithmic processes that control the three Arduinos and eighteen solenoids.
 Python is used for analyzing the spectra and deciphering the prevelant harmonics of the harmonic plates.
-My more recent studies of various tuning systems play into the algorithmic composition I'm creating based off analyzed harmonics of the various plates.
-Plus many other random skills; crimping, soldering, 3D printing, mechatronic actuation, and PCB design.
-
-In the end, it's really just the organized sound of a collection of metal plates that were origanally meant to be a ladder bookshelf, hence the name.
-
-Ultimately, the processes do no matter. I only mention it because of the psychological impact it's had on me and many others - I am an artist, COVID and layoffs and the shitstorm that was 2020-2022 put me and many others in a state where we were scared to create for ourselves again (instead I was lucky enough to create for capital). Creating themed experiences is a great profession, but I must expect more from myself.
-
-I hope brushing off these cobwebs lessen the distance from myself and the art I was meant to create during my time here.
