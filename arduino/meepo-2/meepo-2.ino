@@ -1,8 +1,8 @@
 // meepo
 // for controlling the meepo board serial messages
 
-# define arduinoID 2
-# define NUM_SOLENOIDS 6
+#define arduinoID 2
+#define NUM_SOLENOIDS 6
 
 #include <avr/interrupt.h>
 #include <avr/io.h>
@@ -13,7 +13,6 @@
 char bytes[2];
 short notes[NUM_SOLENOIDS];
 
-int handshake = 0;
 int statustimer = 0;
 
 // actuator pins
@@ -23,7 +22,7 @@ int actuators[] = {
 
 void setup() {
   // serial
-  Serial.begin(57600);
+  Serial.begin(9600);
 
   // interrupt timer parameters
   TCCR2A = 1;
@@ -48,22 +47,22 @@ ISR(TIMER2_OVF_vect) {
     if (notes[i] > 0) {
       digitalWrite(actuators[i], HIGH);
       notes[i]--;
-    }
-    else {
+    } else {
       digitalWrite(actuators[i], LOW);
     }
   }
   if (statustimer > 0) {
     digitalWrite(LED_STATUS, HIGH);
     statustimer--;
-  }
-  else {
+  } else {
     digitalWrite(LED_STATUS, LOW);
   }
 }
 
 void loop() {
   if (Serial.available()) {
+    digitalWrite(LED_STATUS, HIGH);
+
     // parity byte
     if (Serial.read() == 0xff) {
       // reads in a two byte index array
@@ -74,11 +73,11 @@ void loop() {
       int note = byte(bytes[0]) >> 2;
       int velocity = (byte(bytes[0]) << 8 | byte(bytes[1])) & 1023;
 
-      // message required for "handshake" to occur
+      // message that returns Arduino ID to host program
       // allows for a single program to control multiple meepos
-      if (note == 63 && velocity == 1023 && handshake == 0) {
+
+      if (note == 63 && velocity == 1023) {
         Serial.write(arduinoID);
-        handshake = 1;
       }
 
       if (note >= 0 && note <= NUM_SOLENOIDS) {
