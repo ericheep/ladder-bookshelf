@@ -22,7 +22,7 @@ int actuators[] = {
 
 void setup() {
   // serial
-  Serial.begin(57600);
+  Serial.begin(9600);
 
   // interrupt timer parameters
   TCCR2A = 1;

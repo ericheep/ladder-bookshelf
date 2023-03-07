@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
+			"minor" : 3,
 			"revision" : 3,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 93.0, 444.0, 1020.0, 443.0 ],
+		"rect" : [ 102.0, 272.0, 843.0, 419.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -59,7 +59,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 56.0, 361.75, 155.0, 20.0 ],
-					"text" : "/sol 0 3 64"
+					"text" : "/sol 2 0 200"
 				}
 
 			}
@@ -74,7 +74,7 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
+							"minor" : 3,
 							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
@@ -451,7 +451,7 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
+							"minor" : 3,
 							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
@@ -2801,8 +2801,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 23.0, 393.0, 138.0, 22.0 ],
-					"text" : "udpsend 127.0.0.1 5432"
+					"patching_rect" : [ 23.0, 393.0, 193.0, 22.0 ],
+					"text" : "udpsend ladder-spectra.local 5432"
 				}
 
 			}
